@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".TestActivity">
+
+    <Switch
+        android:id="@+id/on_off_switch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/on_off_switch">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/freq_bar_label"
+                style="@style/slider_label"
+                android:text="@string/frequency_label" />
+
+            <LinearLayout
+                android:id="@+id/freq_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/freq_bar_label"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/freq_bar"
+                    style="@style/slider_bar"
+                    android:max="100"
+                    android:progress="44" />
+
+                <EditText
+                    android:id="@+id/freq_edit_text"
+                    style="@style/slider_edit_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/gain_bar_label"
+                style="@style/slider_label"
+                android:layout_below="@id/freq_slider"
+                android:text="@string/gain_label" />
+
+            <LinearLayout
+                android:id="@+id/gain_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/gain_bar_label"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/gain_bar"
+                    style="@style/slider_bar"
+                    android:max="100"
+                    android:progress="50" />
+
+                <EditText
+                    android:id="@+id/gain_edit_text"
+                    style="@style/slider_edit_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/voice_type_bar_label"
+                style="@style/slider_label"
+                android:layout_below="@id/gain_slider"
+                android:text="@string/voice_type_label" />
+
+            <LinearLayout
+                android:id="@+id/voice_type_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/voice_type_bar_label"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/voice_type_bar"
+                    style="@style/slider_bar"
+                    android:max="100"
+                    android:progress="0" />
+
+                <EditText
+                    android:id="@+id/voice_type_edit_text"
+                    style="@style/slider_edit_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/vowel_bar_label"
+                style="@style/slider_label"
+                android:layout_below="@id/voice_type_slider"
+                android:text="@string/vowel_label" />
+
+            <LinearLayout
+                android:id="@+id/vowel_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vowel_bar_label"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/vowel_bar"
+                    style="@style/slider_bar"
+                    android:max="100"
+                    android:progress="0" />
+
+                <EditText
+                    android:id="@+id/vowel_edit_text"
+                    style="@style/slider_edit_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/vibrato_freq_label"
+                style="@style/slider_label"
+                android:layout_below="@id/vowel_slider"
+                android:text="@string/vibrato_frequency_label" />
+
+            <LinearLayout
+                android:id="@+id/vibrato_freq_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vibrato_freq_label"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/vibrato_freq_bar"
+                    style="@style/slider_bar"
+                    android:max="100"
+                    android:progress="60" />
+
+                <EditText
+                    android:id="@+id/vibrato_freq_edit_text"
+                    style="@style/slider_edit_text" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/vibrato_gain_label"
+                style="@style/slider_label"
+                android:layout_below="@id/vibrato_freq_slider"
+                android:text="@string/vibrato_gain_label" />
+
+            <LinearLayout
+                android:id="@+id/vibrato_gain_slider"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/vibrato_gain_label"
+                android:orientation="horizontal">
+
+                <SeekBar
+                    android:id="@+id/vibrato_gain_bar"
+                    style="@style/slider_bar"
+                    android:max="100"
+                    android:progress="50" />
+
+                <EditText
+                    android:id="@+id/vibrato_gain_edit_text"
+                    style="@style/slider_edit_text" />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
