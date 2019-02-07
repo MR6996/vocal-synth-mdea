@@ -35,7 +35,6 @@
         android:layout_below="@id/audio_toggle"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
-        android:text="test: 1/15"
         android:textAlignment="center" />
 
     <RadioGroup

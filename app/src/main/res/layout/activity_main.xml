@@ -31,6 +31,13 @@
         android:onClick="goToTest"
         android:text="@string/test_button" />
 
+    <Button
+        android:id="@+id/share_button"
+        style="@style/button_style"
+        android:layout_below="@id/test_button"
+        android:onClick="shareResults"
+        android:text="@string/share_button" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

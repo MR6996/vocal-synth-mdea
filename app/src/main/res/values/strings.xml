@@ -16,4 +16,5 @@
     <string name="u_vowel">U</string>
     <string name="confirm_button">Conferma</string>
     <string name="experiment_description">bla bla bla ....</string>
+    <string name="share_button">Esporta risultati</string>
 </resources>
