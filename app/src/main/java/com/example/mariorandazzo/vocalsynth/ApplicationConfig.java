@@ -1,11 +1,11 @@
 package com.example.mariorandazzo.vocalsynth;
 
-class ApplicationConfig {
+public  class ApplicationConfig {
 
-    protected final static int SR = 48000;
-    protected final static int blockSize = 128;
-    protected final static int SAMPLES_NUMBER = 15;
-    protected static final String FILE_NAME = "samples.csv";
+    public final static int SR = 48000;
+    public final static int blockSize = 128;
+    public final static int SAMPLES_NUMBER = 15;
+    public static final String RESULT_DIR = "samples";
 
     private static final ApplicationConfig ourInstance = new ApplicationConfig();
 

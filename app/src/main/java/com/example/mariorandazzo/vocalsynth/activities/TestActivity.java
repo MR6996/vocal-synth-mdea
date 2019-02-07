@@ -1,19 +1,20 @@
-package com.example.mariorandazzo.vocalsynth;
+package com.example.mariorandazzo.vocalsynth.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.Switch;
 
 import com.DspFaust.DspFaust;
+import com.example.mariorandazzo.vocalsynth.ApplicationConfig;
+import com.example.mariorandazzo.vocalsynth.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-public class TestActivity extends AppCompatActivity {
+public class TestActivity extends BaseActivity {
 
     private DspFaust dspFaust;
 

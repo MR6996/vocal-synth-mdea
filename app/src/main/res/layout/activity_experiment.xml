@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:padding="10dp"
-    tools:context="com.example.mariorandazzo.vocalsynth.ExperimentActivity">
+    tools:context="com.example.mariorandazzo.vocalsynth.activities.ExperimentActivity">
 
 
     <TextView
@@ -42,31 +42,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/progress"
+        android:enabled="false"
         android:gravity="center"
         android:orientation="horizontal"
         android:padding="10dp">
 
         <RadioButton
+            android:id="@+id/a_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="@string/a_vowel" />
 
         <RadioButton
+            android:id="@+id/e_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/e_vowel" />
 
         <RadioButton
+            android:id="@+id/i_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/i_vowel" />
 
         <RadioButton
+            android:id="@+id/o_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/o_vowel" />
 
         <RadioButton
+            android:id="@+id/u_radio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/u_vowel" />

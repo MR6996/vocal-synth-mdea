@@ -1,15 +1,18 @@
-package com.example.mariorandazzo.vocalsynth;
+package com.example.mariorandazzo.vocalsynth.activities;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+
+import com.example.mariorandazzo.vocalsynth.ApplicationConfig;
+import com.example.mariorandazzo.vocalsynth.R;
+
+import org.zeroturnaround.zip.ZipUtil;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +31,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void shareResults(View view) {
-        File resultFile = new File(getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), ApplicationConfig.FILE_NAME);
+        File resultDirectory = getExternalFilesDir(ApplicationConfig.RESULT_DIR);
+        File resultZip = new File(getExternalFilesDir(ApplicationConfig.RESULT_DIR) + ".zip");
+        ZipUtil.pack(resultDirectory, resultZip);
+
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(resultFile));
+        shareIntent.setType("application/zip");
+        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(resultZip));
         startActivity(Intent.createChooser(shareIntent, "Esporta..."));
     }
 }

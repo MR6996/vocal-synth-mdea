@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:padding="20dp"
-    tools:context="com.example.mariorandazzo.vocalsynth.MainActivity">
+    tools:context="com.example.mariorandazzo.vocalsynth.activities.MainActivity">
 
     <TextView
         android:id="@+id/title"

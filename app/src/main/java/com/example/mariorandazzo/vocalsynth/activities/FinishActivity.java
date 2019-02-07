@@ -1,9 +1,10 @@
-package com.example.mariorandazzo.vocalsynth;
+package com.example.mariorandazzo.vocalsynth.activities;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-public class FinishActivity extends AppCompatActivity {
+import com.example.mariorandazzo.vocalsynth.R;
+
+public class FinishActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
