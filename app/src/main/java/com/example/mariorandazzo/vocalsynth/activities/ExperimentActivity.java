@@ -32,6 +32,7 @@ public class ExperimentActivity extends BaseActivity {
 
     private DspFaust dspFaust;
     private Random randGen;
+    private int currentFrequency;
     private int currentGender;
     private float currentVowel;
 
@@ -96,7 +97,7 @@ public class ExperimentActivity extends BaseActivity {
     }
 
     private void goToNextStep() {
-        samples.add(new Sample(currentGender, currentVowel, getVowel(vowelGroup.getCheckedRadioButtonId())));
+        samples.add(new Sample(currentFrequency, currentGender, currentVowel, getVowel(vowelGroup.getCheckedRadioButtonId())));
         generateTestPoint();
     }
 
@@ -122,7 +123,7 @@ public class ExperimentActivity extends BaseActivity {
         CSVPrinter csvFilePrinter = null;
         File reusltFile = new File(
                 getExternalFilesDir(ApplicationConfig.RESULT_DIR),
-                "samples_" + new Date().getTime() + ".csv"
+                "sample_" + new Date().getTime() + ".csv"
         );
 
         try {
@@ -130,7 +131,7 @@ public class ExperimentActivity extends BaseActivity {
             csvFilePrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withRecordSeparator("\n"));
 
             for (Sample s : samples)
-                csvFilePrinter.printRecord(s.getR(), s.getTheta(), s.getVowel());
+                csvFilePrinter.printRecord(s.getFrequency(), s.getGender(), s.getVowel(), s.getPredictedVowel());
 
             Intent finishIntent = new Intent(this, FinishActivity.class);
             finishIntent.putExtra(FinishActivity.FILEPATH_RESULT, reusltFile.getPath());
@@ -160,8 +161,12 @@ public class ExperimentActivity extends BaseActivity {
                         getString(R.string.progress_format), samplesCount, ApplicationConfig.SAMPLES_NUMBER)
         );
 
+        currentFrequency = randGen.nextInt((int)dspFaust.getParamMax(0)-80) + 80;
+        dspFaust.setParamValue(0, currentFrequency);
+
         currentGender = randGen.nextInt(5);
         dspFaust.setParamValue(2, currentGender);
+
         currentVowel = randGen.nextFloat()*4;
         dspFaust.setParamValue(3, currentVowel);
     }
