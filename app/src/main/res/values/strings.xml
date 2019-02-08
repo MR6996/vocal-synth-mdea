@@ -17,4 +17,13 @@
     <string name="confirm_button">Conferma</string>
     <string name="experiment_description">bla bla bla ....</string>
     <string name="share_button">Esporta risultati</string>
+    <string name="exportChooserTitle">Esporta...</string>
+    <string name="exportFailed">Nessun risultato da esportare!</string>
+    <string name="thank_you">Pollice in su.</string>
+    <string name="finish_title">Grazie per la partecipazione!!</string>
+    <string name="single_export_button">Esporta risultato</string>
+    <string name="error">Errore</string>
+    <string name="io_error">Errore durante la scrittura dei dati!</string>
+    <string name="stream_closing_error">Errore durante il salvataggio dei dati!</string>
+    <string name="progress_format">Test: %d/%d</string>
 </resources>

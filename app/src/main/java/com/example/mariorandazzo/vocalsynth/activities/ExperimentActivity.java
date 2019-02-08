@@ -120,22 +120,23 @@ public class ExperimentActivity extends BaseActivity {
     private void finishExperiment() {
         FileWriter fileWriter = null;
         CSVPrinter csvFilePrinter = null;
+        File reusltFile = new File(
+                getExternalFilesDir(ApplicationConfig.RESULT_DIR),
+                "samples_" + new Date().getTime() + ".csv"
+        );
 
         try {
-            fileWriter = new FileWriter(
-                    new File(
-                            getExternalFilesDir(ApplicationConfig.RESULT_DIR),
-                            "samples_" + new Date().getTime() + ".csv"
-                    )
-            );
+            fileWriter = new FileWriter(reusltFile);
             csvFilePrinter = new CSVPrinter(fileWriter, CSVFormat.DEFAULT.withRecordSeparator("\n"));
 
             for (Sample s : samples)
                 csvFilePrinter.printRecord(s.getR(), s.getTheta(), s.getVowel());
 
-            startActivity(new Intent(this, FinishActivity.class));
+            Intent finishIntent = new Intent(this, FinishActivity.class);
+            finishIntent.putExtra(FinishActivity.FILEPATH_RESULT, reusltFile.getPath());
+            startActivity(finishIntent);
         } catch (IOException e) {
-            showTerminateDialog("Errore", "Errore durante la scrittura dei dati!");
+            showTerminateDialog(getString(R.string.error), getString(R.string.io_error));
         } finally {
             try {
                 if (fileWriter != null) {
@@ -146,7 +147,7 @@ public class ExperimentActivity extends BaseActivity {
                     csvFilePrinter.close();
                 }
             } catch (IOException e) {
-                showTerminateDialog("Errore", "Errore durante il salvataggio dei dati!");
+                showTerminateDialog(getString(R.string.error), getString(R.string.stream_closing_error));
             }
 
         }
@@ -156,7 +157,7 @@ public class ExperimentActivity extends BaseActivity {
         progressView.setText(
                 String.format(
                         getResources().getConfiguration().locale,
-                        "Test: %d/%d", samplesCount, ApplicationConfig.SAMPLES_NUMBER)
+                        getString(R.string.progress_format), samplesCount, ApplicationConfig.SAMPLES_NUMBER)
         );
 
         currentGender = randGen.nextInt(5);

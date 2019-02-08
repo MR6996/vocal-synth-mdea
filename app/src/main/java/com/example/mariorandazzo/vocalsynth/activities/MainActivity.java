@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.mariorandazzo.vocalsynth.ApplicationConfig;
 import com.example.mariorandazzo.vocalsynth.R;
@@ -33,11 +34,17 @@ public class MainActivity extends BaseActivity {
     public void shareResults(View view) {
         File resultDirectory = getExternalFilesDir(ApplicationConfig.RESULT_DIR);
         File resultZip = new File(getExternalFilesDir(ApplicationConfig.RESULT_DIR) + ".zip");
-        ZipUtil.pack(resultDirectory, resultZip);
 
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("application/zip");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(resultZip));
-        startActivity(Intent.createChooser(shareIntent, "Esporta..."));
+        if(resultDirectory != null && resultDirectory.listFiles().length > 0) {
+            ZipUtil.pack(resultDirectory, resultZip);
+
+            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+            shareIntent.setType("application/zip");
+            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(resultZip));
+            startActivity(Intent.createChooser(shareIntent, getString(R.string.exportChooserTitle)));
+        }
+        else {
+            Toast.makeText(this, getString(R.string.exportFailed), Toast.LENGTH_LONG).show();
+        }
     }
 }
