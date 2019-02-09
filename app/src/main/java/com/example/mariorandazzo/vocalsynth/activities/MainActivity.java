@@ -21,7 +21,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resultDirectoryName = preferences.getString(getString(R.string.settings_result_directory_key), "/");
+        resultDirectoryName = preferences.getString(getString(R.string.settings_result_directory_key), "/samples");
     }
 
     public void startExperiment(View view) {

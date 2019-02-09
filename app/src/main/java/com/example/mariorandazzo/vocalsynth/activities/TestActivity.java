@@ -84,8 +84,8 @@ public class TestActivity extends BaseActivity {
         onOffSwitch = findViewById(R.id.on_off_switch);
         onOffSwitch.setOnCheckedChangeListener(switchListener);
 
-        int samplingRate = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_sampling_rate_key), "")));
-        int blockSize = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_block_size_key), "")));
+        int samplingRate = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_sampling_rate_key), "48000")));
+        int blockSize = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_block_size_key), "128")));
 
         dspFaust = new DspFaust(samplingRate, blockSize);
 
