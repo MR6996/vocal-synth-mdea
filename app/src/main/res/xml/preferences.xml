@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory android:title="@string/settings_vowel_synth">
+        <EditTextPreference
+            android:id="@+id/block_size"
+            android:defaultValue="128"
+            android:inputType="number"
+            android:key="@string/settings_block_size_key"
+            android:summary=""
+            android:title="Dimensione blocco" />
+
+        <EditTextPreference
+            android:id="@+id/sampling_rate"
+            android:defaultValue="48000"
+            android:inputType="number"
+            android:key="@string/settings_sampling_rate_key"
+            android:summary=""
+            android:title="Sampling rate" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="@string/settings_experiments">
+        <EditTextPreference
+            android:id="@+id/samples_number"
+            android:defaultValue="15"
+            android:inputType="number"
+            android:key="@string/settings_samples_number_key"
+            android:summary="@string/settings_samples_number_summary"
+            android:title="@string/settings_samples_number_title" />
+
+        <EditTextPreference
+            android:id="@+id/result_directory"
+            android:defaultValue="samples"
+            android:inputType="text"
+            android:key="@string/settings_result_directory_key"
+            android:summary="@string/settings_directory_summary"
+            android:title="@string/settings_directory_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

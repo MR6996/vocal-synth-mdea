@@ -45,6 +45,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/settings_button"
+        android:onClick="goToSettings"
         android:src="@drawable/ic_settings" />
 
 </RelativeLayout>

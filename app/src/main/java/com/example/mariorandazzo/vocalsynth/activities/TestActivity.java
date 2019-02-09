@@ -7,12 +7,12 @@ import android.widget.SeekBar;
 import android.widget.Switch;
 
 import com.DspFaust.DspFaust;
-import com.example.mariorandazzo.vocalsynth.ApplicationConfig;
 import com.example.mariorandazzo.vocalsynth.R;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 public class TestActivity extends BaseActivity {
 
@@ -84,7 +84,10 @@ public class TestActivity extends BaseActivity {
         onOffSwitch = findViewById(R.id.on_off_switch);
         onOffSwitch.setOnCheckedChangeListener(switchListener);
 
-        dspFaust = new DspFaust(ApplicationConfig.SR, ApplicationConfig.blockSize);
+        int samplingRate = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_sampling_rate_key), "")));
+        int blockSize = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_block_size_key), "")));
+
+        dspFaust = new DspFaust(samplingRate, blockSize);
 
         for (int i = 0; i < bars.size(); i++) {
             SeekBar bar = bars.get(i);

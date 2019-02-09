@@ -15,9 +15,9 @@
     <string name="o_vowel">O</string>
     <string name="u_vowel">U</string>
     <string name="confirm_button">Conferma</string>
-    <string name="experiment_description">bla bla bla ....</string>
+    <string name="experiment_description">bla bla bla </string>
     <string name="share_button">Esporta risultati</string>
-    <string name="exportChooserTitle">Esporta...</string>
+    <string name="exportChooserTitle">Esporta…</string>
     <string name="exportFailed">Nessun risultato da esportare!</string>
     <string name="thank_you">Pollice in su.</string>
     <string name="finish_title">Grazie per la partecipazione!!</string>
@@ -26,4 +26,14 @@
     <string name="io_error">Errore durante la scrittura dei dati!</string>
     <string name="stream_closing_error">Errore durante il salvataggio dei dati!</string>
     <string name="progress_format">Test: %d/%d</string>
+    <string name="settings_vowel_synth">Sintetizzatore vocale</string>
+    <string name="settings_experiments">Esperimenti</string>
+    <string name="settings_samples_number_title">Numero di test</string>
+    <string name="settings_samples_number_summary">Numero di prove da fare in un esperimento.</string>
+    <string name="settings_directory_title">Nome cartella risultati</string>
+    <string name="settings_directory_summary">Coincide anche con il nome del file zip dei risultati</string>
+    <string name="settings_block_size_key">block_size</string>
+    <string name="settings_sampling_rate_key">sampling_rate</string>
+    <string name="settings_samples_number_key">samples_number</string>
+    <string name="settings_result_directory_key">result_directory</string>
 </resources>

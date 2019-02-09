@@ -10,7 +10,6 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.DspFaust.DspFaust;
-import com.example.mariorandazzo.vocalsynth.ApplicationConfig;
 import com.example.mariorandazzo.vocalsynth.R;
 import com.example.mariorandazzo.vocalsynth.model.Sample;
 
@@ -23,14 +22,19 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 public class ExperimentActivity extends BaseActivity {
 
     private int samplesCount = 1;
     private List<Sample> samples = new ArrayList<>();
+    private String resultDirectoryName;
+    private int samplesNumber;
 
     private DspFaust dspFaust;
+    private int samplingRate;
+    private int blockSize;
     private Random randGen;
     private int currentFrequency;
     private int currentGender;
@@ -58,7 +62,13 @@ public class ExperimentActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_experiment);
 
-        dspFaust = new DspFaust(ApplicationConfig.SR, ApplicationConfig.blockSize);
+        samplesNumber = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_samples_number_key), "")));
+        resultDirectoryName = preferences.getString(getString(R.string.settings_result_directory_key), "/");
+        samplingRate = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_sampling_rate_key), "")));
+        blockSize = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_block_size_key), "")));
+
+
+        dspFaust = new DspFaust(samplingRate, blockSize);
         randGen = new Random(new Date().getTime());
 
         audioToggle = findViewById(R.id.audio_toggle);
@@ -90,7 +100,7 @@ public class ExperimentActivity extends BaseActivity {
         audioToggle.setChecked(false);
         samplesCount++;
 
-        if (samplesCount > ApplicationConfig.SAMPLES_NUMBER)
+        if (samplesCount > samplesNumber)
             finishExperiment();
         else
             goToNextStep();
@@ -104,15 +114,15 @@ public class ExperimentActivity extends BaseActivity {
     private int getVowel(int radioButtonId) {
         switch (radioButtonId) {
             case R.id.a_radio:
-                return  0;
+                return 0;
             case R.id.e_radio:
-                return  1;
+                return 1;
             case R.id.i_radio:
-                return  2;
+                return 2;
             case R.id.o_radio:
-                return  3;
+                return 3;
             case R.id.u_radio:
-                return  4;
+                return 4;
         }
 
         return -1;
@@ -122,7 +132,7 @@ public class ExperimentActivity extends BaseActivity {
         FileWriter fileWriter = null;
         CSVPrinter csvFilePrinter = null;
         File reusltFile = new File(
-                getExternalFilesDir(ApplicationConfig.RESULT_DIR),
+                getExternalFilesDir(resultDirectoryName),
                 "sample_" + new Date().getTime() + ".csv"
         );
 
@@ -158,16 +168,16 @@ public class ExperimentActivity extends BaseActivity {
         progressView.setText(
                 String.format(
                         getResources().getConfiguration().locale,
-                        getString(R.string.progress_format), samplesCount, ApplicationConfig.SAMPLES_NUMBER)
+                        getString(R.string.progress_format), samplesCount, samplesNumber)
         );
 
-        currentFrequency = randGen.nextInt((int)dspFaust.getParamMax(0)-80) + 80;
+        currentFrequency = randGen.nextInt((int) dspFaust.getParamMax(0) - 80) + 80;
         dspFaust.setParamValue(0, currentFrequency);
 
         currentGender = randGen.nextInt(5);
         dspFaust.setParamValue(2, currentGender);
 
-        currentVowel = randGen.nextFloat()*4;
+        currentVowel = randGen.nextFloat() * 4;
         dspFaust.setParamValue(3, currentVowel);
     }
 
