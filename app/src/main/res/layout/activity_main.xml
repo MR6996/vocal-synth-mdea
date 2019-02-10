@@ -18,28 +18,50 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textColor="@color/colorOnPrimary" />
 
+    <RadioGroup
+        android:id="@+id/gender_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <RadioButton
+            android:id="@+id/f_radio"
+            style="@style/radio_button_style"
+            android:checked="true"
+            android:text="@string/f_gender" />
+
+        <RadioButton
+            android:id="@+id/m_radio"
+            style="@style/radio_button_style"
+            android:text="@string/m_gender" />
+    </RadioGroup>
+
     <Button
         android:id="@+id/start_button"
         style="@style/button_style"
-        android:layout_below="@id/title"
+        android:layout_below="@id/gender_radio_group"
         android:onClick="startExperiment"
         android:text="@string/start_experiment_button" />
 
     <Button
-        android:id="@+id/test_button"
-        style="@style/button_style"
-        android:layout_below="@id/start_button"
-        android:onClick="goToTest"
-        android:text="@string/test_button" />
-
-    <Button
         android:id="@+id/share_button"
         style="@style/button_style"
-        android:layout_below="@id/test_button"
+        android:layout_above="@+id/test_button"
         android:onClick="shareResults"
         android:text="@string/share_button" />
 
+    <Button
+        android:id="@+id/test_button"
+        style="@style/button_style"
+        android:layout_above="@+id/settings"
+        android:onClick="goToTest"
+        android:text="@string/test_button" />
+
     <ImageView
+        android:id="@+id/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"

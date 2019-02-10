@@ -15,7 +15,7 @@
     <string name="o_vowel">O</string>
     <string name="u_vowel">U</string>
     <string name="confirm_button">Conferma</string>
-    <string name="experiment_description">bla bla bla </string>
+    <string name="experiment_description">L\'esperimento consiste nell\'ascoltare vari suoni prodotti da un sintetizzatore vocale, e per ognuno di essi specificare quale voale si sta ascoltando. \n\nPer attivare/disattivare l\'audio usa la seguente icona.\n\n</string>
     <string name="share_button">Esporta risultati</string>
     <string name="exportChooserTitle">Esporta…</string>
     <string name="exportFailed">Nessun risultato da esportare!</string>
@@ -36,4 +36,6 @@
     <string name="settings_sampling_rate_key">sampling_rate</string>
     <string name="settings_samples_number_key">samples_number</string>
     <string name="settings_result_directory_key">result_directory</string>
+    <string name="f_gender">Femmina</string>
+    <string name="m_gender">Maschio</string>
 </resources>

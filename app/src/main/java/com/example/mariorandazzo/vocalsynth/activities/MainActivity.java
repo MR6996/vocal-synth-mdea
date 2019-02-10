@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.mariorandazzo.vocalsynth.R;
@@ -14,7 +15,11 @@ import java.io.File;
 
 public class MainActivity extends BaseActivity {
 
+    protected static final String GENDER_EXTRA = "com.randazzo.mario.gender.extra.key";
+
     private String resultDirectoryName;
+
+    private RadioGroup genderRadioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +27,14 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
 
         resultDirectoryName = preferences.getString(getString(R.string.settings_result_directory_key), "/samples");
+
+        genderRadioGroup = findViewById(R.id.gender_radio_group);
     }
 
     public void startExperiment(View view) {
-        startActivity(new Intent(this, ExperimentActivity.class));
+        Intent experimentIntent = new Intent(this, ExperimentActivity.class);
+        experimentIntent.putExtra(GENDER_EXTRA, genderRadioGroup.getCheckedRadioButtonId() == R.id.m_radio);
+        startActivity(experimentIntent);
     }
 
     public void goToTest(View view) {

@@ -31,6 +31,7 @@ public class ExperimentActivity extends BaseActivity {
     private List<Sample> samples = new ArrayList<>();
     private String resultDirectoryName;
     private int samplesNumber;
+    private boolean subjectGender;
 
     private DspFaust dspFaust;
     private int samplingRate;
@@ -67,6 +68,9 @@ public class ExperimentActivity extends BaseActivity {
         samplingRate = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_sampling_rate_key), "48000")));
         blockSize = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_block_size_key), "128")));
 
+        Bundle extrasBundle = getIntent().getExtras();
+        if (extrasBundle != null)
+            subjectGender = extrasBundle.getBoolean(MainActivity.GENDER_EXTRA);
 
         dspFaust = new DspFaust(samplingRate, blockSize);
         randGen = new Random(new Date().getTime());
@@ -133,7 +137,7 @@ public class ExperimentActivity extends BaseActivity {
         CSVPrinter csvFilePrinter = null;
         File reusltFile = new File(
                 getExternalFilesDir(resultDirectoryName),
-                "sample_" + new Date().getTime() + ".csv"
+                "sample_" + (subjectGender ? "M" : "F") + "_" + new Date().getTime() + ".csv"
         );
 
         try {
