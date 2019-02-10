@@ -174,10 +174,10 @@ public class ExperimentActivity extends BaseActivity {
         currentFrequency = randGen.nextInt((int) dspFaust.getParamMax(0) - 80) + 80;
         dspFaust.setParamValue(0, currentFrequency);
 
-        currentGender = randGen.nextInt(5);
+        currentGender = randGen.nextInt((int)dspFaust.getParamMax(2)+1);
         dspFaust.setParamValue(2, currentGender);
 
-        currentVowel = randGen.nextFloat() * 4;
+        currentVowel = randGen.nextFloat() * dspFaust.getParamMax(3);
         dspFaust.setParamValue(3, currentVowel);
     }
 
