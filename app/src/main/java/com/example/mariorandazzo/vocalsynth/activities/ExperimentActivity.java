@@ -64,7 +64,7 @@ public class ExperimentActivity extends BaseActivity {
         setContentView(R.layout.activity_experiment);
 
         samplesNumber = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_samples_number_key), "15")));
-        resultDirectoryName = preferences.getString(getString(R.string.settings_result_directory_key), "/sample");
+        resultDirectoryName = preferences.getString(getString(R.string.settings_result_directory_key), "/samples");
         samplingRate = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_sampling_rate_key), "48000")));
         blockSize = Integer.parseInt(Objects.requireNonNull(preferences.getString(getString(R.string.settings_block_size_key), "128")));
 

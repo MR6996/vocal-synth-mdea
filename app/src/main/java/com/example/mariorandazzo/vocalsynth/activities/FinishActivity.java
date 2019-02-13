@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.mariorandazzo.vocalsynth.R;
+import com.example.mariorandazzo.vocalsynth.tasks.ShareTask;
 
 import java.io.File;
 
@@ -34,9 +35,6 @@ public class FinishActivity extends BaseActivity {
     }
 
     public void export(View view) {
-        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_STREAM, resultUri);
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.exportChooserTitle)));
+        new ShareTask(this).execute(resultUri);
     }
 }

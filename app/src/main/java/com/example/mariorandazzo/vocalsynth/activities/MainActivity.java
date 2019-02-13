@@ -1,17 +1,12 @@
 package com.example.mariorandazzo.vocalsynth.activities;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.example.mariorandazzo.vocalsynth.R;
-
-import org.zeroturnaround.zip.ZipUtil;
-
-import java.io.File;
+import com.example.mariorandazzo.vocalsynth.tasks.ShareAllTask;
 
 public class MainActivity extends BaseActivity {
 
@@ -42,19 +37,7 @@ public class MainActivity extends BaseActivity {
     }
 
     public void shareResults(View view) {
-        File resultDirectory = getExternalFilesDir(resultDirectoryName);
-        File resultZip = new File(getExternalFilesDir(resultDirectoryName) + ".zip");
-
-        if (resultDirectory != null && resultDirectory.listFiles().length > 0) {
-            ZipUtil.pack(resultDirectory, resultZip);
-
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("application/zip");
-            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(resultZip));
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.exportChooserTitle)));
-        } else {
-            Toast.makeText(this, getString(R.string.exportFailed), Toast.LENGTH_LONG).show();
-        }
+        new ShareAllTask(this).execute(resultDirectoryName);
     }
 
     public void goToSettings(View view) {
